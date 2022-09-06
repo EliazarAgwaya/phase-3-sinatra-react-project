@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2022_09_06_051132) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "comment"
-    t.integer "comment_id"
+    t.string "text"
+    t.integer "material_id"
   end
 
   create_table "materials", force: :cascade do |t|
