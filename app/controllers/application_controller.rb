@@ -16,6 +16,15 @@ class ApplicationController < Sinatra::Base
     comment = Comment.find(params[:id])
     comment.to_json
   end
+  get "/users/:username" do
+    user = User.find_by_username(params[:username])
+    user.to_json(include: :materials)
+  end
+
+  post "/materials" do
+    new_material = Material.create(name: params[:name], source: params[:source], likes: params[:likes])
+    new_material.to_json
+  end
 
   post "/materials/:material_id/comments" do
     material = Material.find_by(id: params[:material_id])
